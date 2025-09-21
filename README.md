@@ -294,5 +294,3 @@ Herhangi bir sorun yaşarsanız:
 3. Log dosyalarını (`logs/` klasöründe) kontrol edin
 
 **👨‍💻 Geliştirici:** [Ekrem Sekmen](mailto:ekremsekmenq@gmail.com)
-
-**🚀 Happy Coding!**
