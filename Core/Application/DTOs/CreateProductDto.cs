@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Case_1.Models
+namespace Case_1.Core.Application.DTOs
 {
-    public class Product
+    public class CreateProductDto
     {
-        public int Id { get; set; }
-        
         [Required]
-        [StringLength(100)]
+        [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; } = string.Empty;
         
         [StringLength(500)]
@@ -23,9 +21,5 @@ namespace Case_1.Models
         
         [StringLength(50)]
         public string? Category { get; set; }
-        
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

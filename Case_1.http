@@ -1,20 +1,53 @@
-@Case_1_HostAddress = http://localhost:5000
+@Case_1_HostAddress = http://localhost:5125
+@AccessToken = 
 
-### Get all products
+### Register a new user
+POST {{Case_1_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "Test123!",
+  "firstName": "Test",
+  "lastName": "User"
+}
+
+###
+
+### Login user
+POST {{Case_1_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "testuser",
+  "password": "Test123!"
+}
+
+###
+
+### Get user profile (requires authentication)
+GET {{Case_1_HostAddress}}/api/auth/profile
+Authorization: Bearer {{AccessToken}}
+
+###
+
+### Get all products (public)
 GET {{Case_1_HostAddress}}/api/products
 Accept: application/json
 
 ###
 
-### Get product by ID
+### Get product by ID (public)
 GET {{Case_1_HostAddress}}/api/products/1
 Accept: application/json
 
 ###
 
-### Create a new product
+### Create a new product (requires authentication)
 POST {{Case_1_HostAddress}}/api/products
 Content-Type: application/json
+Authorization: Bearer {{AccessToken}}
 
 {
   "name": "Test Product",
@@ -26,9 +59,10 @@ Content-Type: application/json
 
 ###
 
-### Update a product
+### Update a product (requires authentication)
 PUT {{Case_1_HostAddress}}/api/products/1
 Content-Type: application/json
+Authorization: Bearer {{AccessToken}}
 
 {
   "name": "Updated Test Product",
@@ -40,7 +74,8 @@ Content-Type: application/json
 
 ###
 
-### Delete a product
+### Delete a product (requires authentication)
 DELETE {{Case_1_HostAddress}}/api/products/1
+Authorization: Bearer {{AccessToken}}
 
 ###

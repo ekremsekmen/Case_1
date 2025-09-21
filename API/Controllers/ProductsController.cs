@@ -1,9 +1,10 @@
-using Case_1.DTOs;
-using Case_1.Services;
+using Case_1.Core.Application.DTOs;
+using Case_1.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 
-namespace Case_1.Controllers
+namespace Case_1.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -76,8 +77,10 @@ namespace Case_1.Controllers
         /// <param name="createProductDto">Product creation data</param>
         /// <returns>Created product</returns>
         [HttpPost]
+        [Authorize]
         [ProducesResponseType(typeof(ProductDto), 201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] CreateProductDto createProductDto)
         {
             try
@@ -109,8 +112,10 @@ namespace Case_1.Controllers
         /// <param name="updateProductDto">Product update data</param>
         /// <returns>Updated product</returns>
         [HttpPut("{id}")]
+        [Authorize]
         [ProducesResponseType(typeof(ProductDto), 200)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<ProductDto>> UpdateProduct([Required] int id, [FromBody] UpdateProductDto updateProductDto)
         {
@@ -145,7 +150,9 @@ namespace Case_1.Controllers
         /// <param name="id">Product ID</param>
         /// <returns>Success status</returns>
         [HttpDelete("{id}")]
+        [Authorize]
         [ProducesResponseType(204)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         public async Task<ActionResult> DeleteProduct([Required] int id)
         {

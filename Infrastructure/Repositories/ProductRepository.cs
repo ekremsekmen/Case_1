@@ -1,8 +1,8 @@
-using Case_1.Data;
-using Case_1.Models;
+using Case_1.Infrastructure.Data;
+using Case_1.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Case_1.Repositories
+namespace Case_1.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {

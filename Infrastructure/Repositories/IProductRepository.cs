@@ -1,6 +1,6 @@
-using Case_1.Models;
+using Case_1.Core.Domain.Entities;
 
-namespace Case_1.Repositories
+namespace Case_1.Infrastructure.Repositories
 {
     public interface IProductRepository
     {

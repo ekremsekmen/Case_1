@@ -1,8 +1,8 @@
-using Case_1.DTOs;
-using Case_1.Models;
-using Case_1.Repositories;
+using Case_1.Core.Application.DTOs;
+using Case_1.Core.Domain.Entities;
+using Case_1.Infrastructure.Repositories;
 
-namespace Case_1.Services
+namespace Case_1.Infrastructure.Services
 {
     public class ProductService : IProductService
     {

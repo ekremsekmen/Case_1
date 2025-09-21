@@ -1,29 +1,57 @@
-# Product API
+# Advanced Product API with Authentication
 
-Bu proje, ASP.NET Core 8.0 ve Entity Framework Core kullanarak geliştirilmiş bir RESTful Product API'sidir. Temel CRUD işlemlerini destekler ve katmanlı mimari prensiplerini takip eder.
+Bu proje, ASP.NET Core 8.0, Entity Framework Core, JWT Authentication, Redis Cache ve CQRS pattern kullanarak geliştirilmiş gelişmiş bir RESTful API'sidir. Onion Architecture prensiplerini takip eder ve enterprise-level özellikleri barındırır.
 
 ## 🚀 Teknolojiler
 
+### Core Technologies
 - **.NET 8.0** - Web API framework
 - **ASP.NET Core** - Web application framework
 - **Entity Framework Core 9.0** - ORM
-- **PostgreSQL** - Veritabanı
-- **Swagger/OpenAPI** - API dokümantasyonu
+- **PostgreSQL** - Primary database
+- **Redis** - Caching layer
 
-## 🏗️ Mimari
+### Architecture & Patterns
+- **Onion Architecture** - Clean architecture implementation
+- **CQRS Pattern** - Command Query Responsibility Segregation
+- **MediatR** - In-process messaging for CQRS
+- **JWT Authentication** - Secure token-based authentication
 
-Proje katmanlı mimari (Layered Architecture) prensiplerini takip eder:
+### Additional Features
+- **Serilog** - Advanced structured logging
+- **Swagger/OpenAPI** - API documentation
+- **BCrypt** - Password hashing
+- **Redis Cache** - High-performance caching
+
+## 🏗️ Mimari - Onion Architecture
+
+Proje Onion Architecture (Clean Architecture) prensiplerini takip eder:
 
 ```
-├── Controllers/         # API endpoints
-├── Services/           # İş mantığı katmanı
-├── Repositories/       # Veri erişim katmanı
-├── Models/            # Entity modelleri
-├── DTOs/              # Data Transfer Objects
-├── Data/              # Database context
-├── Middleware/        # Global middleware (Exception handling)
-└── Migrations/        # EF Core migrations
+├── Core/
+│   ├── Domain/
+│   │   └── Entities/           # Domain entities (User, Product, RefreshToken)
+│   └── Application/
+│       ├── Commands/           # CQRS Commands
+│       ├── Queries/           # CQRS Queries
+│       ├── Handlers/          # Command/Query handlers
+│       └── DTOs/              # Data Transfer Objects
+├── Infrastructure/
+│   ├── Data/                  # Database context & configurations
+│   ├── Services/              # External services (JWT, Cache, etc.)
+│   └── Repositories/          # Data access implementations
+├── API/
+│   ├── Controllers/           # API endpoints
+│   └── Middleware/            # Custom middleware
+└── Migrations/                # EF Core migrations
 ```
+
+### Dependency Flow
+- **API Layer** → **Infrastructure Layer** → **Application Layer** → **Domain Layer**
+- Domain katmanı hiçbir dış bağımlılığa sahip değildir
+- Application katmanı sadece Domain'e bağımlıdır
+- Infrastructure katmanı Application ve Domain'e bağımlıdır
+- API katmanı tüm katmanları orchestrate eder
 
 ## 📋 Özellikler
 
