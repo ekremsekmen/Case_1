@@ -22,7 +22,7 @@ Modern .NET 8.0 Web API projesi - JWT Authentication, Redis Cache ve CQRS patter
 ### 1️⃣ Projeyi İndirin
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ekremsekmen/Case_1_2.git
 cd Case_1_2
 ```
 
