@@ -1,13 +1,13 @@
-using Case_1.Core.Application.Commands.Auth;
-using Case_1.Core.Application.DTOs.Auth;
-using Case_1.Core.Domain.Entities;
-using Case_1.Infrastructure.Data;
-using Case_1.Infrastructure.Services;
+using Case_1_2.Core.Application.Commands.Auth;
+using Case_1_2.Core.Application.DTOs.Auth;
+using Case_1_2.Core.Domain.Entities;
+using Case_1_2.Infrastructure.Data;
+using Case_1_2.Infrastructure.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 
-namespace Case_1.Core.Application.Handlers.Auth
+namespace Case_1_2.Core.Application.Handlers.Auth
 {
     public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthResponseDto>
     {

@@ -1,7 +1,7 @@
-using Case_1.Core.Application.DTOs;
+using Case_1_2.Core.Application.DTOs;
 using MediatR;
 
-namespace Case_1.Core.Application.Commands.Products
+namespace Case_1_2.Core.Application.Commands.Products
 {
     public class UpdateProductCommand : IRequest<ProductDto?>
     {

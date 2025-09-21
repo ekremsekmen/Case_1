@@ -4677,11 +4677,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ekremsekmen/mycodes/Case_1/Case_1.csproj",
-      "projectName": "Case_1",
-      "projectPath": "/Users/ekremsekmen/mycodes/Case_1/Case_1.csproj",
+      "projectUniqueName": "/Users/ekremsekmen/mycodes/Case_1_2/Case_1_2.csproj",
+      "projectName": "Case_1_2",
+      "projectPath": "/Users/ekremsekmen/mycodes/Case_1_2/Case_1_2.csproj",
       "packagesPath": "/Users/ekremsekmen/.nuget/packages/",
-      "outputPath": "/Users/ekremsekmen/mycodes/Case_1/obj/",
+      "outputPath": "/Users/ekremsekmen/mycodes/Case_1_2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ekremsekmen/.nuget/NuGet/NuGet.Config"

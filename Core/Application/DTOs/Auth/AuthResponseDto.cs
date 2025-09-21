@@ -1,4 +1,4 @@
-namespace Case_1.Core.Application.DTOs.Auth
+namespace Case_1_2.Core.Application.DTOs.Auth
 {
     public class AuthResponseDto
     {
@@ -15,5 +15,6 @@ namespace Case_1.Core.Application.DTOs.Auth
         public string Email { get; set; } = string.Empty;
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

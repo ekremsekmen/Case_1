@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace Case_1.Middleware
+namespace Case_1_2.Middleware
 {
     public class GlobalExceptionHandlingMiddleware
     {

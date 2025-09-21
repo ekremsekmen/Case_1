@@ -1,6 +1,6 @@
-using Case_1.Core.Application.DTOs;
+using Case_1_2.Core.Application.DTOs;
 
-namespace Case_1.Infrastructure.Services
+namespace Case_1_2.Infrastructure.Services
 {
     public interface IProductService
     {

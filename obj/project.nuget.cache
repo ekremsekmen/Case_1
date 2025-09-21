@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vfAEAiPdsgw=",
+  "dgSpecHash": "YR+UFYLF64g=",
   "success": true,
-  "projectFilePath": "/Users/ekremsekmen/mycodes/Case_1/Case_1.csproj",
+  "projectFilePath": "/Users/ekremsekmen/mycodes/Case_1_2/Case_1_2.csproj",
   "expectedPackageFiles": [
     "/Users/ekremsekmen/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/ekremsekmen/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

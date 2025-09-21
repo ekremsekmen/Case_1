@@ -1,4 +1,4 @@
-namespace Case_1.Infrastructure.Services
+namespace Case_1_2.Infrastructure.Services
 {
     public interface ICacheService
     {

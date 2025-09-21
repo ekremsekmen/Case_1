@@ -1,10 +1,11 @@
-using Case_1.Core.Application.DTOs.Auth;
-using Case_1.Core.Application.Commands.Auth;
+using Case_1_2.Core.Application.DTOs.Auth;
+using Case_1_2.Core.Application.Commands.Auth;
+using Case_1_2.Core.Application.Queries.Auth;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Case_1.API.Controllers
+namespace Case_1_2.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -112,21 +113,23 @@ namespace Case_1.API.Controllers
             try
             {
                 var userId = User.FindFirst("userId")?.Value;
-                if (string.IsNullOrEmpty(userId))
+                if (string.IsNullOrEmpty(userId) || !int.TryParse(userId, out int userIdInt))
                 {
+                    _logger.LogWarning("Invalid or missing userId in token");
                     return Unauthorized();
                 }
 
-                // This would typically use a query handler
-                // For now, return basic user info from claims
-                var userDto = new UserDto
-                {
-                    Id = int.Parse(userId),
-                    Username = User.FindFirst("username")?.Value ?? "",
-                    Email = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? ""
-                };
+                _logger.LogInformation("Getting user profile for UserId: {UserId} via CQRS", userIdInt);
+                var query = new GetUserProfileQuery(userIdInt);
+                var userProfile = await _mediator.Send(query);
 
-                return Ok(userDto);
+                if (userProfile == null)
+                {
+                    _logger.LogWarning("User profile not found for UserId: {UserId}", userIdInt);
+                    return NotFound("User profile not found");
+                }
+
+                return Ok(userProfile);
             }
             catch (Exception ex)
             {

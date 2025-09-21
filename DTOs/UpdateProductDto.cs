@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Case_1.DTOs
+namespace Case_1_2.DTOs
 {
     public class UpdateProductDto
     {

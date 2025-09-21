@@ -2,7 +2,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 using StackExchange.Redis;
 
-namespace Case_1.Infrastructure.Services
+namespace Case_1_2.Infrastructure.Services
 {
     public class CacheService : ICacheService
     {

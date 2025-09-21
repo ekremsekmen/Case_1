@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Case_1.Core.Application.Commands.Products
+namespace Case_1_2.Core.Application.Commands.Products
 {
     public class DeleteProductCommand : IRequest<bool>
     {

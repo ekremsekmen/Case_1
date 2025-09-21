@@ -1,11 +1,11 @@
-using Case_1.Core.Domain.Entities;
+using Case_1_2.Core.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Case_1.Infrastructure.Services
+namespace Case_1_2.Infrastructure.Services
 {
     public interface IJwtService
     {

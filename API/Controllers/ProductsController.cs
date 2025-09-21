@@ -1,10 +1,12 @@
-using Case_1.Core.Application.DTOs;
-using Case_1.Infrastructure.Services;
+using Case_1_2.Core.Application.DTOs;
+using Case_1_2.Core.Application.Queries.Products;
+using Case_1_2.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
+using MediatR;
 
-namespace Case_1.API.Controllers
+namespace Case_1_2.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -12,11 +14,16 @@ namespace Case_1.API.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IMediator _mediator;
         private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(IProductService productService, ILogger<ProductsController> logger)
+        public ProductsController(
+            IProductService productService, 
+            IMediator mediator,
+            ILogger<ProductsController> logger)
         {
             _productService = productService;
+            _mediator = mediator;
             _logger = logger;
         }
 
@@ -30,8 +37,9 @@ namespace Case_1.API.Controllers
         {
             try
             {
-                _logger.LogInformation("Getting all products");
-                var products = await _productService.GetAllProductsAsync();
+                _logger.LogInformation("Getting all products via CQRS");
+                var query = new GetAllProductsQuery();
+                var products = await _mediator.Send(query);
                 return Ok(products);
             }
             catch (Exception ex)
@@ -53,8 +61,9 @@ namespace Case_1.API.Controllers
         {
             try
             {
-                _logger.LogInformation("Getting product with ID: {ProductId}", id);
-                var product = await _productService.GetProductByIdAsync(id);
+                _logger.LogInformation("Getting product with ID: {ProductId} via CQRS", id);
+                var query = new GetProductByIdQuery(id);
+                var product = await _mediator.Send(query);
                 
                 if (product == null)
                 {

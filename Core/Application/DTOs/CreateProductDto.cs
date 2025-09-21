@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Case_1.Core.Application.DTOs
+namespace Case_1_2.Core.Application.DTOs
 {
     public class CreateProductDto
     {
