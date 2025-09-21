@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using MediatR;
 using Serilog;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +48,16 @@ builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
+
+// Add Redis Connection Multiplexer for pattern-based cache invalidation
+builder.Services.AddSingleton<IConnectionMultiplexer>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Redis");
+    return ConnectionMultiplexer.Connect(connectionString!);
+});
+
+// Add Cache Service
+builder.Services.AddScoped<ICacheService, CacheService>();
 
 // Add JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JWT");
